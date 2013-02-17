@@ -4,17 +4,19 @@ Donate link: http://faleddo.x10.bz/donate.html
 Tags: filter, language, post, comment, bbpress, child
 Requires at least: 2.9
 Tested up to: 3.5.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
+License: GPLv2 or later
 
-A lighweight filtering plugin. Just activate and it will censor explicit words automatically by replace them with asterik(*) characters.
+A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters.
 
 == Description ==
 
-Ultimate WP Filter is a small and simple Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tag clouds and in bbPress automatically by replace them with asterik(*) characters. Its totally free without any feature or time limitation. This first release version contains 14 words only. Please contribute to make this plugin cleans websites better by submitting more explicit words to faleddo@ymail.com.
+Ultimate WP Filter is a small and simple Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tags, tag clouds and in bbPress automatically by replacing them with asterik(*) characters. Its totally free without any feature or time limitation. This version contains a few words only. Please contribute to make this plugin cleans websites better by submitting more explicit words and bug reports to faleddo@ymail.com.
 
 = Features =
 
 1. Censor explicit words in English and Indonesian language
+2. Set custom words to be filtered
 
 == Installation ==
 
@@ -37,6 +39,11 @@ None. Yet.
 
 = 1.0 =
 * First release
+
+= 1.1 =
+* Ability to set custom keywords
+* Added admin menu to configure Ultimate WP Filter plugin
+* Added 41 keywords
 
 == Upgrade Notice ==
 * None - The plugin does have version control and will perform any structural upgrades automatically.

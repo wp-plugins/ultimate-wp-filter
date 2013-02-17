@@ -1,57 +1,49 @@
 <?php
-/*
-Plugin Name: Ultimate WP Filter
-Plugin URI: http://faleddo.x10.bz
-Description: A lighweight filtering plugin. Just activate and it will censor explicit words automatically by replace them with asterik(*) characters.
-Version: 1.0
-Author: Laurensius Faleddo
-Author URI: http://faleddo.x10.bz
-Text Domain: ultimate-wp-filter
-Licence: GPL2
-*/
-	add_action( 'admin_menu', 'uwpf_options' );
+	
+	function uwpf_clean() {
 
-	function uwpf_options() {
-		add_options_page('Ultimate WP Filter Configs', 'Ultimate WP Filter', 'manage_options', __FILE__, 'build_page');
+		if( is_admin() ) return;
+
+		$tmp = get_option('uwpf_options');
+
+		if (isset($tmp['rdo_group_filtering'])) {
+			if($tmp['rdo_group_filtering']=='off'){ return; }}		
+			
+		if (isset($tmp['chk_comment_author'])) {
+			if($tmp['chk_comment_author']=='1'){ add_filter('get_comment_author', 'CleanWords'); }}		
+			
+		if (isset($tmp['chk_comment_text'])) {
+			if($tmp['chk_comment_text']=='1'){ add_filter('comment_text', 'CleanWords'); }}
+			
+		if (isset($tmp['chk_post_content'])) {
+			if($tmp['chk_post_content']=='1'){ add_filter('the_content', 'CleanWords'); }}
+			
+		if (isset($tmp['chk_post_tags'])) {
+			if($tmp['chk_post_tags']=='1'){ add_filter('term_links-post_tag', 'CleanWords'); }}		
+			
+		if (isset($tmp['chk_post_title'])) {
+			if($tmp['chk_post_title']=='1'){ add_filter('the_title', 'CleanWords'); }}
+
+		if (isset($tmp['chk_tag_cloud'])) {
+			if($tmp['chk_tag_cloud']=='1'){ add_filter('wp_tag_cloud', 'CleanWords'); }}
+
+		if (isset($tmp['chk_bbpress'])) {
+			if($tmp['chk_bbpress']=='1'){
+				if (class_exists('bbPress')) {
+					add_filter('bbp_get_topic_content', 'CleanWords');
+					add_filter('bbp_get_reply_content', 'CleanWords');
+				}
+			}
+		}
 	}
 	
-	function build_page() {
-		$options = get_option( 'uwpf_option' );
-		$customkeywords = isset( $options['custom_keywords'] ) ? $options['custom_keywords'] : '';
-	?>
-	<div class="wrap">
-		<div class="icon32" id="icon-options-general"><br></div>
-		<h2>Ultimate WP Filter</h2>
-		<p></p>
-		
-		
-		<form method="post" action="options.php">
-			<table class="form-table">
-				<th scope="row">
-						Custom Keywords:
-						<br/>
-						<span class="description">
-							Include custom keywords to be filtered. Separate them with a comma(,).
-						</span>
-					</th>
-					<td>
-						<textarea name="uwpf_option[custom_keywords]" rows="10" cols=100%><?php echo esc_textarea( $customkeywords ); ?></textarea>
-					</td>
-				</tr>
-			</table>
-			
-			<p class="submit">
-				<input type="submit" class="button-primary" value="Save Changes" />
-			</p>
-		</form>
-	</div>
-	<?php	
-}
 	function CleanWords($teks) {
-				
-		$indonesian_word = "asu,bajingan,bangsat,jancuk,kontol,lonte,ndasmu,";
-		$english_word = "bitch,asshole,fuck,motherfucker,wtf,what the fuck,whatthefuck";
-		$words = "$indonesian_word, $english_word";
+		$tmp = get_option('uwpf_options');
+		
+		$custom = $tmp['custom_keywords'];
+		$english_word = "asshole,bitch,fuck,motherfucker,what the fuck,whatthefuck,wtf,";
+		$indonesian_word = "asu,bajingan,banci,bangsat,bego,bejad,bejat,bencong,bolot,brengsek,budek,geblek,gembel,goblok,idiot,jablay,jancuk,kampungan,kamseupay,keparat,kontol,kunyuk,lonte,maho,ndasmu,ngehe,pecun,perek,sarap,sinting,sompret,tai,tolol,udik";
+		$words = "$custom, $indonesian_word, $english_word";
 		$words = explode(",", $words);
 			
 			foreach($words as $keywords)
@@ -74,15 +66,4 @@ Licence: GPL2
 		return $haystack;
 	}
 
-	add_filter('comment_text', 'CleanWords');
-	add_filter('get_comment_author', 'CleanWords');
-	add_filter('term_links-post_tag', 'CleanWords');
-	add_filter('the_title', 'CleanWords');
-	add_filter('the_content', 'CleanWords');
-	add_filter('wp_tag_cloud', 'CleanWords');
-
-	if (class_exists('bbPress')) {
-		add_filter('bbp_get_topic_content', 'CleanWords');
-		add_filter('bbp_get_reply_content', 'CleanWords');
-	}
 ?>
