@@ -47,7 +47,7 @@ None. Yet.
 * Added admin menu to configure Ultimate WP Filter plugin
 * Added 41 keywords
 
-= 1.1.1
+= 1.1.1 =
 * Ability to set filtering language
 * Added French language
 
