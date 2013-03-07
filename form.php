@@ -16,7 +16,11 @@
 							"chk_post_content" => 1,
 							"chk_post_tags" => 1,
 							"chk_post_title" => 1,
-							"chk_tag_cloud" => 1
+							"chk_tag_cloud" => 1,
+							"chk_lang_english" => 1,
+							"chk_lang_french" => 1,
+							"chk_lang_indonesian" => 1,
+							"chk_lang_custom" => 1
 			);
 			update_option('uwpf_options', $arr);
 		}
@@ -27,7 +31,7 @@
 		
 		<div class="wrap">
 		
-		<div style="padding:5px 10px;color:#fff;font-weight:bold; border: 0px; background: #FF433D; padding:8px 20px;font-size:18pt;">
+		<div style="padding:5px 10px;color:#fff;font-weight:bold; border: 0px; background: #676767; padding:8px 20px;font-size:18pt;">
 			<center>
 				Ultimate WP Filter
 			</center>			
@@ -77,13 +81,26 @@
 						</td>
 					</tr>
 					
+					<tr valign="top">
+						<th scope="row">Filtering Language</th>
+						<td>
+							<label><input name="uwpf_options[chk_lang_english]" type="checkbox" value="1" <?php if (isset($options['chk_lang_english'])) { checked('1', $options['chk_lang_english']); } ?> /> English </label><br />
+						
+							<label><input name="uwpf_options[chk_lang_french]" type="checkbox" value="1" <?php if (isset($options['chk_lang_french'])) { checked('1', $options['chk_lang_french']); } ?> /> French </label><br />
+							
+							<label><input name="uwpf_options[chk_lang_indonesian]" type="checkbox" value="1" <?php if (isset($options['chk_lang_indonesian'])) { checked('1', $options['chk_lang_indonesian']); } ?> /> Indonesian </label><br />
+
+							<label><input name="uwpf_options[chk_lang_custom]" type="checkbox" value="1" <?php if (isset($options['chk_lang_custom'])) { checked('1', $options['chk_lang_custom']); } ?> /> Include custom keywords </label><br />							
+						</td>
+					</tr>
+					
 				</table>
 				<p class="submit">
 					<input type="submit" class="button-secondary" value="<?php _e('Save Changes') ?>" />
 				</p>
 			</form>
 						
-			<hr color="#FF433D" size="3"></hr>
+			<hr color="#676767" size="3"></hr>
 			
 			<center>
 				<a class=button-secondary href="http://faleddo.x10.bz/donate.html" title="Donate" target="_blank">Donate</a> | 

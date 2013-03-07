@@ -2,8 +2,8 @@
 /*
 Plugin Name: Ultimate WP Filter
 Plugin URI: http://faleddo.x10.bz/free-software
-Description: A lighweight filtering plugin. Just activate and it will censor explicit words automatically by replacing them with asterik(*) characters.
-Version: 1.1.0
+Description: A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters in many language and user-defined keywords.
+Version: 1.1.1
 Author: Laurensius Faleddo
 Author URI: http://faleddo.x10.bz
 Text Domain: ultimate-wp-filter
