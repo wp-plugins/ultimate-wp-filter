@@ -17,6 +17,7 @@
 							"chk_post_tags" => 1,
 							"chk_post_title" => 1,
 							"chk_tag_cloud" => 1,
+							"chk_lang_deutsch" => 1,
 							"chk_lang_english" => 1,
 							"chk_lang_french" => 1,
 							"chk_lang_indonesian" => 1,
@@ -84,6 +85,8 @@
 					<tr valign="top">
 						<th scope="row">Filtering Language</th>
 						<td>
+							<label><input name="uwpf_options[chk_lang_deutsch]" type="checkbox" value="1" <?php if (isset($options['chk_lang_deutsch'])) { checked('1', $options['chk_lang_deutsch']); } ?> /> Deutsch </label><br />
+							
 							<label><input name="uwpf_options[chk_lang_english]" type="checkbox" value="1" <?php if (isset($options['chk_lang_english'])) { checked('1', $options['chk_lang_english']); } ?> /> English </label><br />
 						
 							<label><input name="uwpf_options[chk_lang_french]" type="checkbox" value="1" <?php if (isset($options['chk_lang_french'])) { checked('1', $options['chk_lang_french']); } ?> /> French </label><br />
