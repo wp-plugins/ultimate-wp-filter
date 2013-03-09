@@ -4,7 +4,7 @@ Donate link: http://faleddo.x10.bz/donate.html
 Tags: filter, language, post, comment, bbpress, child, custom
 Requires at least: 2.9
 Tested up to: 3.5.1
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 License: GPLv2 or later
 
 A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters in many language and user-defined keywords.
