@@ -1,21 +1,21 @@
 === Ultimate WP Filter ===
 Contributors: Laurensius Faleddo
 Donate link: http://faleddo.x10.bz/donate.html
-Tags: filter, language, post, comment, bbpress, child, custom
+Tags: wwwguard, security, filter, language, post, comment, bbpress, child, custom
 Requires at least: 2.9
 Tested up to: 3.5.1
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 
 A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters in many language and user-defined keywords.
 
 == Description ==
 
-Ultimate WP Filter is an advanced Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tags, tag clouds and in bbPress automatically by replacing them with asterik(*) characters. Its has hundreds of defined keywords in many language such as Deutsch, English, Indonesian, and French. But you can define your own keywords too in admin settings page and configure which area to be filtered. Its totally free without any feature or time limitation. Please contribute to make this plugin cleans websites better by submitting more explicit words and bug reports, or feature request to faleddo@ymail.com.
+Ultimate WP Filter is an advanced Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tags, tag clouds and in bbPress automatically by replacing them with asterik(*) characters. Its has thousand of defined keywords in many language with WWWGuard API. Visit http://filter.faleddo.x10.bz for available language list. You can define your own keywords too in admin settings page and configure which area to be filtered. Please contribute to make this plugin cleans websites better by submitting more explicit words and bug reports, or feature request to faleddo@ymail.com.
 
 = Features =
 
-1. Censor explicit words in Deutsch, English, French, and Indonesian language
+1. Censor explicit words in many language
 2. Set custom words to be filtered
 3. Set filtering target
 4. Set filtering language
@@ -53,6 +53,14 @@ None. Yet.
 
 = 1.1.2 =
 * Added Deutsch language
+
+= 1.1.3 = 
+* Added Dutch, Italian, Japanese, Portuguese, Russian, and Spanish languages
+* Ability to select all language and filtering target in admin options.
+
+= 1.2.0 =
+* Now Ultimate WP Filter use WWWGuard API for better filtering
+* Removed language selection in admin menu
 
 == Upgrade Notice ==
 * None - The plugin does have version control and will perform any structural upgrades automatically.

@@ -8,6 +8,11 @@
 		register_setting( 'uwpf_plugin_options', 'uwpf_options', 'uwpf_validate' );
 	}
 	
+	function uwpf_load_js()
+	{
+		wp_enqueue_script('chk-js', plugin_dir_url(__FILE__).'js/chk.js');
+	}
+
 	function requires_wordpress_version() {
 		global $wp_version;
 		$plugin = plugin_basename( __FILE__ );

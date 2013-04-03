@@ -1,43 +1,38 @@
 <?php
-	
+
 	function uwpf_add_page() {
 		add_options_page('Ultimate WP Filter Configs', 'Ultimate WP Filter', 'manage_options', 'panel.php', 'BuildPage');
 	}
-	
+
 	function uwpf_SetDefaults() {
 		$tmp = get_option('uwpf_options');
 		if((!is_array($tmp))) {
 			delete_option('uwpf_options');
 			$arr = array(	"rdo_group_filtering" => "on",
-							"custom_keywords" => "asds",
+							"custom_keywords" => "",
 							"chk_bbpress" => 1,
 							"chk_comment_author" => 1,
 							"chk_comment_text" => 1,
-							"chk_post_content" => 1,
-							"chk_post_tags" => 1,
+							/*"chk_post_tags" => 1,*/
 							"chk_post_title" => 1,
-							"chk_tag_cloud" => 1,
-							"chk_lang_deutsch" => 1,
-							"chk_lang_english" => 1,
-							"chk_lang_french" => 1,
-							"chk_lang_indonesian" => 1,
-							"chk_lang_custom" => 1
+							"chk_post_content" => 1,
+							"chk_tag_cloud" => 1
 			);
 			update_option('uwpf_options', $arr);
 		}
 	}
-	
+
 	function BuildPage() {
-	?>		
-		
+	?>
+
 		<div class="wrap">
-		
+
 		<div style="padding:5px 10px;color:#fff;font-weight:bold; border: 0px; background: #676767; padding:8px 20px;font-size:18pt;">
 			<center>
 				Ultimate WP Filter
-			</center>			
-		</div>		
-		
+			</center>
+		</div>
+
 			<form method="post" action="options.php">
 				<?php settings_fields('uwpf_plugin_options'); ?>
 				<?php $options = get_option('uwpf_options'); ?>
@@ -55,7 +50,7 @@
 							<label><input name="uwpf_options[rdo_group_filtering]" type="radio" value="off" <?php checked('off', $options['rdo_group_filtering']); ?> /> Off</label><br />
 						</td>
 					</tr>
-					
+
 					<tr>
 						<th scope="row">Custom Keywords<br/>
 						<span class="description">Include custom keywords to be filtered. Separate them with a comma(,).</span>
@@ -69,33 +64,21 @@
 						<th scope="row">Filtering Target</th>
 						<td>
 							<label><input name="uwpf_options[chk_bbpress]" type="checkbox" value="1" <?php if (isset($options['chk_bbpress'])) { checked('1', $options['chk_bbpress']); } ?> /> bbPress </label><br />
-						
-							<label><input name="uwpf_options[chk_comment_author]" type="checkbox" value="1" <?php if (isset($options['chk_comment_author'])) { checked('1', $options['chk_comment_author']); } ?> /> Comment Author </label><br />
-							<label><input name="uwpf_options[chk_comment_text]" type="checkbox" value="1" <?php if (isset($options['chk_comment_text'])) { checked('1', $options['chk_comment_text']); } ?> /> Comments</label><br />
 
-							<label><input name="uwpf_options[chk_post_content]" type="checkbox" value="1" <?php if (isset($options['chk_post_content'])) { checked('1', $options['chk_post_content']); } ?> /> Post Content</label><br />
-							<label><input name="uwpf_options[chk_post_tags]" type="checkbox" value="1" <?php if (isset($options['chk_post_tags'])) { checked('1', $options['chk_post_tags']); } ?> /> Post Tags </label><br />
+							<label><input name="uwpf_options[chk_comment_author]" type="checkbox" value="1" <?php if (isset($options['chk_comment_author'])) { checked('1', $options['chk_comment_author']); } ?> /> Comment Author </label><br />
+							<label><input name="uwpf_options[chk_comment_text]" type="checkbox" value="1" <?php if (isset($options['chk_comment_text'])) { checked('1', $options['chk_comment_text']); } ?> /> Comment Text </label><br />
+							
+							<?php /*<label><input name="uwpf_options[chk_post_tags]" type="checkbox" value="1" <?php if (isset($options['chk_post_tags'])) { checked('1', $options['chk_post_tags']); } ?> /> Post Tags </label><br />*/ ?>
 							<label><input name="uwpf_options[chk_post_title]" type="checkbox" value="1" <?php if (isset($options['chk_post_title'])) { checked('1', $options['chk_post_title']); } ?> /> Post Title</label><br />
+							<label><input name="uwpf_options[chk_post_content]" type="checkbox" value="1" <?php if (isset($options['chk_post_content'])) { checked('1', $options['chk_post_content']); } ?> /> Post Content</label><br />
 
 							<label><input name="uwpf_options[chk_tag_cloud]" type="checkbox" value="1" <?php if (isset($options['chk_tag_cloud'])) { checked('1', $options['chk_tag_cloud']); } ?> /> Tag Clouds </label><br />
-														
-						</td>
-					</tr>
-					
-					<tr valign="top">
-						<th scope="row">Filtering Language</th>
-						<td>
-							<label><input name="uwpf_options[chk_lang_deutsch]" type="checkbox" value="1" <?php if (isset($options['chk_lang_deutsch'])) { checked('1', $options['chk_lang_deutsch']); } ?> /> Deutsch </label><br />
+											
+							+ <a onClick="CheckAll">Select all</a>
 							
-							<label><input name="uwpf_options[chk_lang_english]" type="checkbox" value="1" <?php if (isset($options['chk_lang_english'])) { checked('1', $options['chk_lang_english']); } ?> /> English </label><br />
-						
-							<label><input name="uwpf_options[chk_lang_french]" type="checkbox" value="1" <?php if (isset($options['chk_lang_french'])) { checked('1', $options['chk_lang_french']); } ?> /> French </label><br />
-							
-							<label><input name="uwpf_options[chk_lang_indonesian]" type="checkbox" value="1" <?php if (isset($options['chk_lang_indonesian'])) { checked('1', $options['chk_lang_indonesian']); } ?> /> Indonesian </label><br />
 
-							<label><input name="uwpf_options[chk_lang_custom]" type="checkbox" value="1" <?php if (isset($options['chk_lang_custom'])) { checked('1', $options['chk_lang_custom']); } ?> /> Include custom keywords </label><br />							
 						</td>
-					</tr>
+					</tr>					
 					
 				</table>
 				<p class="submit">
