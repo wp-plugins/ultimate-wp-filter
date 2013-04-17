@@ -4,14 +4,14 @@ Donate link: http://faleddo.x10.bz/donate.html
 Tags: wwwguard, security, filter, language, post, comment, bbpress, child, custom
 Requires at least: 2.9
 Tested up to: 3.5.1
-Stable tag: 1.2.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 
 A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters in many language and user-defined keywords.
 
 == Description ==
 
-Ultimate WP Filter is an advanced Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tags, tag clouds and in bbPress automatically by replacing them with asterik(*) characters. Its has thousand of defined keywords in many language with WWWGuard API, http://filter.faleddo.x10.bz . Visit site for available language information. You can define your own keywords too in admin settings page and configure which area to be filtered. Please contribute to make this plugin cleans websites better by submitting more explicit words and bug reports, or feature request to faleddo@ymail.com.
+Ultimate WP Filter is an advanced Wordpress filtering plugin that will censor explicit words words in comments, posts content, posts title, tags, tag clouds and in bbPress automatically by replacing them with asterik(*) characters. Its has thousand of defined keywords in many language with WWWGuard API, http://filter.faleddo.x10.bz. Visit site for available language information. You can define your own keywords too in admin settings page and configure which area to be filtered. Now with new smart filtering feature, cheated badwords will be detected even they were not listed yet in WWWGuard database. Please contribute to make this plugin cleans websites better by submitting more explicit words and bug reports, or feature request to faleddo@ymail.com.
 
 = Features =
 
@@ -63,6 +63,10 @@ None. Yet.
 
 = 1.2.1 =
 * bug fixes
+
+= 1.4.0 =
+* minor bug fixes
+* Added Smart Filtering feature
 
 == Upgrade Notice ==
 * None - The plugin does have version control and will perform any structural upgrades automatically.

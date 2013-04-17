@@ -1,7 +1,7 @@
 <?php
 
 	function uwpf_add_page() {
-		add_options_page('Ultimate WP Filter Configs', 'Ultimate WP Filter', 'manage_options', 'uwpf_panel.php', 'BuildPage');
+		add_options_page('Ultimate WP Filter Configs', 'Ultimate WP Filter', 'manage_options', 'uwpf_panel.php', 'uwpf_BuildPage');
 	}
 
 	function uwpf_SetDefaults() {
@@ -10,6 +10,7 @@
 			delete_option('uwpf_options');
 			$arr = array(	"rdo_group_filtering" => "on",
 							"custom_keywords" => "",
+							"chk_smartfilter" => 1,
 							"chk_bbpress" => 1,
 							"chk_comment_author" => 1,
 							"chk_comment_text" => 1,
@@ -22,7 +23,7 @@
 		}
 	}
 
-	function BuildPage() {
+	function uwpf_BuildPage() {
 	?>
 
 		<div class="wrap">
@@ -59,7 +60,16 @@
 							<textarea name="uwpf_options[custom_keywords]" rows="7" cols="70" type='textarea'><?php echo $options['custom_keywords']; ?></textarea><br />
 						</td>
 					</tr>
-
+					
+					<tr valign="top">
+						<th scope="row">Smart Filter<br/>
+						<span class="description">Detect cheated badwords even they were not listed yet in database.</span></th>
+						<td>
+							<label><input name="uwpf_options[chk_smartfilter]" type="checkbox" value="1" <?php if (isset($options['chk_smartfilter'])) { checked('1', $options['chk_smartfilter']); } ?> /> Enable Smart Filter </label><br />
+							<span class="description">Smart Filter enabled -> normal performance, better filtering</br></span>
+							<span class="description">Smart Filter disabled -> better performance, basic filtering</span>
+						</td>
+					</tr>
 					<tr valign="top">
 						<th scope="row">Filtering Target</th>
 						<td>
@@ -89,9 +99,10 @@
 			<hr color="#676767" size="3"></hr>
 			
 			<center>
-				<a class=button-secondary href="http://faleddo.x10.bz/donate.html" title="Donate" target="_blank">Donate</a> | 
+				<a class=button-secondary href="http://filter.faleddo.x10.bz/donate.php" title="Donate" target="_blank">Donate</a> | 
 				<a class=button-secondary href="http://twitter.com/faleddo" title="ollow @Faleddo on Twitter" target="_blank">Follow @Faleddo on Twitter</a> | 
 				<a class=button-secondary href="http://faleddo.x10.bz" title="Visit web" target="_blank">Visit web</a> | 
+				<a class=button-secondary href="http://filter.faleddo.x10.bz" title="WWWGuard" target="_blank">WWWGuard</a> | 
 				<a class=button-secondary href="http://wordpress.org/extend/plugins/ultimate-wp-filter" title="Visit web" target="_blank">Rate this plugin</a>
 			</center>
 		</div>

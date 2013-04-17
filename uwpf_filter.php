@@ -10,31 +10,31 @@
 			if($tmp['rdo_group_filtering']=='off'){ return; }}
 
 		if (isset($tmp['chk_comment_author'])) {
-			if($tmp['chk_comment_author']=='1'){ add_filter('get_comment_author', 'CleanWords'); }}		
+			if($tmp['chk_comment_author']=='1'){ add_filter('get_comment_author', 'uwpf_CleanWords'); }}		
 
 		if (isset($tmp['chk_comment_text'])) {
-			if($tmp['chk_comment_text']=='1'){ add_filter('comment_text', 'CleanWords'); }}
+			if($tmp['chk_comment_text']=='1'){ add_filter('comment_text', 'uwpf_CleanWords'); }}
 
 		if (isset($tmp['chk_post_content'])) {
-			if($tmp['chk_post_content']=='1'){ add_filter('the_content', 'CleanWords'); }}		
+			if($tmp['chk_post_content']=='1'){ add_filter('the_content', 'uwpf_CleanWords'); }}		
 		
 		/*
 		================= under development =================
 		if (isset($tmp['chk_post_tags'])) {
-			if($tmp['chk_post_tags']=='1'){ add_filter('term_links-post_tag', 'CleanWords'); }}		
+			if($tmp['chk_post_tags']=='1'){ add_filter('term_links-post_tag', 'uwpf_CleanWords'); }}		
 		*/
 		
 		if (isset($tmp['chk_post_title'])) {
-			if($tmp['chk_post_title']=='1'){ add_filter('the_title', 'CleanWords'); }}
+			if($tmp['chk_post_title']=='1'){ add_filter('the_title', 'uwpf_CleanWords'); }}
 
 		if (isset($tmp['chk_tag_cloud'])) {
-			if($tmp['chk_tag_cloud']=='1'){ add_filter('wp_tag_cloud', 'CleanWords'); }}
+			if($tmp['chk_tag_cloud']=='1'){ add_filter('wp_tag_cloud', 'uwpf_CleanWords'); }}
 
 		if (isset($tmp['chk_bbpress'])) {
 			if($tmp['chk_bbpress']=='1'){
 				if (class_exists('bbPress')) {
-					add_filter('bbp_get_topic_content', 'CleanWords');
-					add_filter('bbp_get_reply_content', 'CleanWords');
+					add_filter('bbp_get_topic_content', 'uwpf_CleanWords');
+					add_filter('bbp_get_reply_content', 'uwpf_CleanWords');
 				}
 			}
 		}
@@ -58,13 +58,19 @@
 		return $text;
 	}
 	
-	function CleanWords($teks) {
+	function uwpf_CleanWords($teks) {
 
 		$tmp = get_option('uwpf_options');
 		$custom = $tmp['custom_keywords'];
+
+		if($tmp['chk_smartfilter']=='1'){
+			$smartfilter = "on";
+		}else{
+			$smartfilter = "off";
+		}
 		
 		$teks = wg_encode($teks);
-		$url = "http://filter.faleddo.x10.bz/service-full.php?text=".$teks."&custom=".$custom;
+		$url = "http://localhost/wwwguard/service-full.php?text=".$teks."&custom=".$custom."&i=".$smartfilter;
 
 		$ParseXML = simplexml_load_file($url);
 		return wg_decode($ParseXML->response);
