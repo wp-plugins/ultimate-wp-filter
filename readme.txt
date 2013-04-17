@@ -4,7 +4,7 @@ Donate link: http://faleddo.x10.bz/donate.html
 Tags: wwwguard, security, filter, language, post, comment, bbpress, child, custom
 Requires at least: 2.9
 Tested up to: 3.5.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 
 A lighweight filtering plugin that will censor explicit words automatically by replacing them with asterik(*) characters in many language and user-defined keywords.
@@ -64,7 +64,7 @@ None. Yet.
 = 1.2.1 =
 * bug fixes
 
-= 1.4.0 =
+= 1.4.1 =
 * minor bug fixes
 * Added Smart Filtering feature
 
