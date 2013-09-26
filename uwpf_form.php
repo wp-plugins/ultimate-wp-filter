@@ -11,10 +11,10 @@
 			$arr = array(	"rdo_group_filtering" => "on",
 							"custom_keywords" => "",
 							"chk_smartfilter" => 1,
+							"level" => "50",
 							"chk_bbpress" => 1,
 							"chk_comment_author" => 1,
 							"chk_comment_text" => 1,
-							/*"chk_post_tags" => 1,*/
 							"chk_post_title" => 1,
 							"chk_post_content" => 1,
 							"chk_tag_cloud" => 1
@@ -54,7 +54,7 @@
 
 					<tr>
 						<th scope="row">Custom Keywords<br/>
-						<span class="description">Include custom keywords to be filtered. Separate them with a comma(,).</span>
+						<span class="description">Include custom keywords to be filtered. Separate them with a comma (,).</span>
 						</th>
 						<td>
 							<textarea name="uwpf_options[custom_keywords]" rows="7" cols="70" type='textarea'><?php echo $options['custom_keywords']; ?></textarea><br />
@@ -70,6 +70,17 @@
 							<span class="description">Smart Filter disabled -> better performance, basic filtering</span>
 						</td>
 					</tr>
+					
+					<tr>
+						<th scope="row">Smart Filter Level<br/>
+						<span class="description">Adjust smart filter sensitivity. (0-100)</span>
+						</th>
+						<td>
+							<textarea name="uwpf_options[level]" rows="1" cols="5" type='textarea'><?php echo $options['level']; ?></textarea><br />
+							<span class="description">It's recommended to set sensitivity between 50 and 75</span>
+						</td>
+					</tr>
+					
 					<tr valign="top">
 						<th scope="row">Filtering Target</th>
 						<td>
@@ -78,14 +89,10 @@
 							<label><input name="uwpf_options[chk_comment_author]" type="checkbox" value="1" <?php if (isset($options['chk_comment_author'])) { checked('1', $options['chk_comment_author']); } ?> /> Comment Author </label><br />
 							<label><input name="uwpf_options[chk_comment_text]" type="checkbox" value="1" <?php if (isset($options['chk_comment_text'])) { checked('1', $options['chk_comment_text']); } ?> /> Comment Text </label><br />
 							
-							<?php /*<label><input name="uwpf_options[chk_post_tags]" type="checkbox" value="1" <?php if (isset($options['chk_post_tags'])) { checked('1', $options['chk_post_tags']); } ?> /> Post Tags </label><br />*/ ?>
 							<label><input name="uwpf_options[chk_post_title]" type="checkbox" value="1" <?php if (isset($options['chk_post_title'])) { checked('1', $options['chk_post_title']); } ?> /> Post Title</label><br />
 							<label><input name="uwpf_options[chk_post_content]" type="checkbox" value="1" <?php if (isset($options['chk_post_content'])) { checked('1', $options['chk_post_content']); } ?> /> Post Content</label><br />
 
-							<label><input name="uwpf_options[chk_tag_cloud]" type="checkbox" value="1" <?php if (isset($options['chk_tag_cloud'])) { checked('1', $options['chk_tag_cloud']); } ?> /> Tag Clouds </label><br />
-											
-							+ <a onClick="CheckAll">Select all</a>
-							
+							<label><input name="uwpf_options[chk_tag_cloud]" type="checkbox" value="1" <?php if (isset($options['chk_tag_cloud'])) { checked('1', $options['chk_tag_cloud']); } ?> /> Tag Clouds </label><br />	
 
 						</td>
 					</tr>					
@@ -99,11 +106,10 @@
 			<hr color="#676767" size="3"></hr>
 			
 			<center>
-				<a class=button-secondary href="http://filter.faleddo.x10.bz/donate.php" title="Donate" target="_blank">Donate</a> | 
-				<a class=button-secondary href="http://twitter.com/faleddo" title="ollow @Faleddo on Twitter" target="_blank">Follow @Faleddo on Twitter</a> | 
-				<a class=button-secondary href="http://faleddo.x10.bz" title="Visit web" target="_blank">Visit web</a> | 
-				<a class=button-secondary href="http://filter.faleddo.x10.bz" title="WWWGuard" target="_blank">WWWGuard</a> | 
-				<a class=button-secondary href="http://wordpress.org/extend/plugins/ultimate-wp-filter" title="Visit web" target="_blank">Rate this plugin</a>
+				<a class=button-secondary href="http://filter.faleddo.com/donate.php" title="Donate" target="_blank">Donate</a> | 
+				<a class=button-secondary href="http://twitter.com/faleddo" title="Follow @Faleddo on Twitter" target="_blank">Follow @Faleddo on Twitter</a> | 
+				<a class=button-secondary href="http://blog.faleddo.com" title="Visit web" target="_blank">Visit web</a> | 
+				<a class=button-secondary href="http://filter.faleddo.com" title="WWWGuard" target="_blank">WWWGuard</a>
 			</center>
 		</div>
 		<?php	

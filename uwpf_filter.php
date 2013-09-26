@@ -18,12 +18,6 @@
 		if (isset($tmp['chk_post_content'])) {
 			if($tmp['chk_post_content']=='1'){ add_filter('the_content', 'uwpf_CleanWords'); }}		
 		
-		/*
-		================= under development =================
-		if (isset($tmp['chk_post_tags'])) {
-			if($tmp['chk_post_tags']=='1'){ add_filter('term_links-post_tag', 'uwpf_CleanWords'); }}		
-		*/
-		
 		if (isset($tmp['chk_post_title'])) {
 			if($tmp['chk_post_title']=='1'){ add_filter('the_title', 'uwpf_CleanWords'); }}
 
@@ -54,7 +48,7 @@
 		$text = str_ireplace("a1p16s19t20", "'", $text );
 		$text = str_ireplace("s19h8a1r18p16", "#", $text );
 		$text = str_ireplace("l12e5s19s19", "<", $text );
-		$text = str_ireplace("m12o15r18e5", ">", $text );		
+		$text = str_ireplace("m12o15r18e5", ">", $text );
 		return $text;
 	}
 	
@@ -62,7 +56,9 @@
 
 		$tmp = get_option('uwpf_options');
 		$custom = $tmp['custom_keywords'];
+		$level = $tmp['level'];
 
+			
 		if($tmp['chk_smartfilter']=='1'){
 			$smartfilter = "on";
 		}else{
@@ -70,8 +66,9 @@
 		}
 		
 		$teks = wg_encode($teks);
-		$url = "http://filter.faleddo.x10.bz/service-full.php?text=".$teks."&custom=".$custom."&i=".$smartfilter;
-
+		$url = "http://filter.faleddo.com/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
+		//$url = "http://localhost/wwwguard/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
+		
 		$ParseXML = simplexml_load_file($url);
 		return wg_decode($ParseXML->response);
 	}
