@@ -66,7 +66,7 @@
 		}
 		
 		$teks = wg_encode($teks);
-		$url = "http://filter.faleddo.com/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
+		$url = "http://filter.faleddo.x10.bz/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
 		//$url = "http://localhost/wwwguard/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
 		
 		$ParseXML = simplexml_load_file($url);
