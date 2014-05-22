@@ -3,7 +3,7 @@ Contributors: Laurensius Faleddo
 Donate link: http://faleddo.com/donate.html
 Tags: wwwguard, security, filter, language, post, comment, bbpress, child, custom
 Requires at least: 2.9
-Tested up to: 3.6.1
+Tested up to: 3.8.3
 Stable tag: 1.5.1
 License: GPLv2 or later
 
