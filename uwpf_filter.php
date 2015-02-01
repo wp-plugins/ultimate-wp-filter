@@ -34,29 +34,12 @@
 		}
 	}
 
-	function wg_encode($text){
-		$text = str_ireplace("&", "a1n14d4", $text );
-		$text = str_ireplace("'", "a1p16s19t20", $text );
-		$text = str_ireplace("#", "s19h8a1r18p16", $text );
-		$text = str_ireplace("<", "l12e5s19s19", $text );
-		$text = str_ireplace(">", "m12o15r18e5", $text );
-		return $text;
-	}
-	
-	function wg_decode($text){
-		$text = str_ireplace("a1n14d4", "&", $text );
-		$text = str_ireplace("a1p16s19t20", "'", $text );
-		$text = str_ireplace("s19h8a1r18p16", "#", $text );
-		$text = str_ireplace("l12e5s19s19", "<", $text );
-		$text = str_ireplace("m12o15r18e5", ">", $text );
-		return $text;
-	}
-	
 	function uwpf_CleanWords($teks) {
 
 		$tmp = get_option('uwpf_options');
 		$custom = $tmp['custom_keywords'];
 		$level = $tmp['level'];
+		$api_key = $tmp['filter_api'];
 
 			
 		if($tmp['chk_smartfilter']=='1'){
@@ -65,12 +48,27 @@
 			$smartfilter = "off";
 		}
 		
-		$teks = wg_encode($teks);
-		$url = "http://filter.faleddo.x10.bz/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
-		//$url = "http://localhost/wwwguard/service-pro.php?text=".$teks."&custom=".$custom."&i=".$smartfilter."&level=".$level;
-		
-		$ParseXML = simplexml_load_file($url);
-		return wg_decode($ParseXML->response);
+		$service_url = 'http://filter.faleddo.com/api/';
+		//$service_url = 'http://127.0.0.1:8000/api/';
+		$curl = curl_init($service_url);
+		$curl_post_data = array(
+				'text' => $teks,
+				'i' => $smartfilter,
+				'level' => $level,
+				'custom' => $custom,
+				'api_key' => $api_key
+		);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
+		$curl_response = curl_exec($curl);
+		curl_close($curl);
+		$response = json_decode($curl_response);
+		if($response->error == "403" OR $curl_response === false){
+			return $teks;
+		}else{
+			return $response->text;
+		}
 	}
 
 ?>

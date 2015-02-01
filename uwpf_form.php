@@ -11,7 +11,8 @@
 			$arr = array(	"rdo_group_filtering" => "on",
 							"custom_keywords" => "",
 							"chk_smartfilter" => 1,
-							"level" => "50",
+							"level" => "65",
+							"fxfilter_api" => "",
 							"chk_bbpress" => 1,
 							"chk_comment_author" => 1,
 							"chk_comment_text" => 1,
@@ -51,7 +52,15 @@
 							<label><input name="uwpf_options[rdo_group_filtering]" type="radio" value="off" <?php checked('off', $options['rdo_group_filtering']); ?> /> Off</label><br />
 						</td>
 					</tr>
-
+					<tr>
+						<th scope="row">API Key [REQUIRED]<br/>
+						<span class="description">FXFilter API Key</span>
+						</th>
+						<td>
+							<textarea name="uwpf_options[filter_api]" rows="1" cols="70" type='textarea'><?php echo $options['filter_api']; ?></textarea><br />
+							<span class="description">FX Profanity Filter API Key. Register one at <a href="http://filter.faleddo.com/registration" target="_blank">http://filter.faleddo.com/registration</a>, then paste the given API key here.</span>
+						</td>
+					</tr>
 					<tr>
 						<th scope="row">Custom Keywords<br/>
 						<span class="description">Include custom keywords to be filtered. Separate them with a comma (,).</span>
@@ -77,7 +86,7 @@
 						</th>
 						<td>
 							<textarea name="uwpf_options[level]" rows="1" cols="5" type='textarea'><?php echo $options['level']; ?></textarea><br />
-							<span class="description">It's recommended to set sensitivity between 50 and 75</span>
+							<span class="description">It's recommended to set sensitivity between 50 and 75. Default is 65.</span>
 						</td>
 					</tr>
 					
@@ -109,7 +118,7 @@
 				<a class=button-secondary href="http://filter.faleddo.com/donate.php" title="Donate" target="_blank">Donate</a> | 
 				<a class=button-secondary href="http://twitter.com/faleddo" title="Follow @Faleddo on Twitter" target="_blank">Follow @Faleddo on Twitter</a> | 
 				<a class=button-secondary href="http://blog.faleddo.com" title="Visit web" target="_blank">Visit web</a> | 
-				<a class=button-secondary href="http://filter.faleddo.com" title="WWWGuard" target="_blank">WWWGuard</a>
+				<a class=button-secondary href="http://filter.faleddo.com" title="FXFilter" target="_blank">FX Profanity Filter</a>
 			</center>
 		</div>
 		<?php	
